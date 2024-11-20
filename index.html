@@ -381,6 +381,52 @@
         As we can see, the results here are a lot better in quality than the
         previous part without CFG. And there are no non-sensical images anymore.
       </p>
+      <hr />
+      <h3>Part 1 - 7. Image-to-image Translation</h3>
+      <p class="description">
+        As we see in part 1 - 4, when we denoise an image with noise, the result
+        it predicted is "edited". And with more noise, the editing effects is
+        stronger. This is pretty normal since it need the model to "hallucinate"
+        a little bit for it to denoise the image onto the manifold of natural
+        images. So in this part, by starting at different i_start (different
+        noise level), we can see different levels of editing. And when we start
+        at a really low noise level, the results is goinf to be really similar
+        to the original image, which is the SDEdit algorithm. Here are my
+        results:
+      </p>
+      <p class="imgTitle">Original Image:</p>
+      <div class="imageWrapper">
+        <img src="images/original_camp.png" class="resultImage" />
+      </div>
+      <p class="imgTitle">SDEdit with different noise level:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 1;</p>
+          <img src="images/camp_SDE_1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 3:</p>
+          <img src="images/camp_SDE_2.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 5:</p>
+          <img src="images/camp_SDE_3.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 7:</p>
+          <img src="images/camp_SDE_4.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 10:</p>
+          <img src="images/camp_SDE_5.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 20:</p>
+          <img src="images/camp_SDE_6.png" class="resultImage" />
+        </div>
+      </div>
     </div>
   </body>
 </html>
