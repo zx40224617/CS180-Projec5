@@ -297,7 +297,90 @@
       </p>
       <hr />
       <h3>Part 1 - 5. Diffusion Model Sampling</h3>
-      <p class="description"></p>
+      <p class="description">
+        Like what we discussed at the end of the previous part, we use i_start =
+        10 to perserve some information of the original image so that the
+        diffusion model will output some result that looks similar to the
+        original image. Which means when we use i_start = 0, and pass in a pure
+        noise, we are basically denoising the pure noise, which we can genrate
+        image from scratch. Here are my results:
+      </p>
+      <p class="imgTitle">Sample Images:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Sample 1;</p>
+          <img src="images/sample1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Sample 2:</p>
+          <img src="images/sample2.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Sample 3:</p>
+          <img src="images/sample3.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Sample 4:</p>
+          <img src="images/sample4.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Sample 5:</p>
+          <img src="images/sample5.png" class="resultImage" />
+        </div>
+      </div>
+      <p>
+        <b class="suggestion">Observation:</b>
+        As we can see, the results here are actually a little blury and the
+        quality is bad, some of them are just non-sense. Which we will fix that
+        in the next section.
+      </p>
+      <hr />
+      <h3>Part 1 - 6. Classifier-Free Guidance (CFG)</h3>
+      <p class="description">
+        As we see in the previous part, the result are bad in quality. So in
+        order to imporve out results, we can implement classifier-free guidance
+        (CFG). For CFG, we first compute both conditional and unconditional
+        noise estimate, which is \(\epsilon_{c}\) and \(\epsilon_{u}\). And then
+        we get a new noise estimation following the formula: \(\epsilon
+        =\epsilon_{u} + \gamma(\epsilon_{c} - \epsilon_{u})\). Where \(\gamma\)
+        denote the strength of the CFG, and for a good quality image, we need
+        \(\gamma\) > 1 (I use \(\gamma\) = 7 here). Note that the unconditional
+        genration prompt is <b>"a high quality photo"</b> and unconditional
+        guidance prompt is <b>""</b>, which is the null prompt. Here are my
+        results:
+      </p>
+      <p class="imgTitle">Sample Images:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">CFG Sample 1;</p>
+          <img src="images/CFG_sample1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">CFG Sample 2:</p>
+          <img src="images/CFG_sample2.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">CFG Sample 3:</p>
+          <img src="images/CFG_sample3.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">CFG Sample 4:</p>
+          <img src="images/CFG_sample4.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">CFG Sample 5:</p>
+          <img src="images/CFG_sample5.png" class="resultImage" />
+        </div>
+      </div>
+      <p>
+        <b class="suggestion">Observation:</b>
+        As we can see, the results here are a lot better in quality than the
+        previous part without CFG. And there are no non-sensical images anymore.
+      </p>
     </div>
   </body>
 </html>
