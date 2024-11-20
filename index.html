@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" type="text/css" href="styles.css" />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap"
+      rel="stylesheet"
+    />
+    <script src="https://polyfill.io/v3/polyfill.min.js?features=es6"></script>
+    <script
+      id="MathJax-script"
+      async
+      src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"
+    ></script>
+    <title>Project 4</title>
+  </head>
+
+  <body class="pageContents">
+    <h1>Project 5 - Part A: The Power of Diffusion model</h1>
+    <div class="wrapper">
+      <h2 class="title">Background of the project:</h2>
+      <p class="introduction">
+        In this part of the project, we are goinf to do a lot of fun things with
+        the pre-trained diffusion model from DeepFloyd including denoising,
+        inpainting, creating visual anagram and hybrid image.
+      </p>
+      <h3>Part 0. Setup</h3>
+      <p class="description">
+        This part is just for us to see what results will the diffusion model
+        return. We first need to follow the steps in the project spec to gain
+        access to use the diffustion model. And then we use it to generate some
+        image base on the prompt. Note that the prompt here are text embeding of
+        a text instead of a real text. And we need to set a seed for this part
+        and all the later parts of the project, I am using <b>180</b>. Here are
+        the rsults with different prompts and inference steps.
+      </p>
+      <p class="imgTitle">inference steps = 20:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">
+            an oil painting of a snowy mountain village:
+          </p>
+          <img src="images/snowy_mountain_20.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">a man wearing a hat:</p>
+          <img src="images/man_wearing_hat_20.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">a rocket ship:</p>
+          <img src="images/rocket_ship_20.png" class="resultImage" />
+        </div>
+      </div>
+
+      <p class="imgTitle">inference steps = 10:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">
+            an oil painting of a snowy mountain village:
+          </p>
+          <img src="images/snowy_mountan_10.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">a man wearing a hat:</p>
+          <img src="images/man_wearing_hat_10.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">a rocket ship:</p>
+          <img src="images/rocket_ship_10.png" class="resultImage" />
+        </div>
+      </div>
+      <hr />
+      <h3>Part 1 - 1. Implementing the Forward Process</h3>
+      <p class="description">
+        For this part, we are using the pre-trained denoiser of DeepFloyd. But
+        first need to implement the forward pass so that we can add noise to the
+        images. Typically, the clean image is \(x_0\) and \(x_T\) is pure noise.
+        Which mean larger t has more noise, and for DeepFloyd models, T = 1000.
+        So in this forward implementation, we need to add the noise to the image
+        base on the t that is given. Which follows this formula:
+        \(\sqrt{\bar{\alpha_t}} x_0 + \sqrt{1 - \bar{\alpha_t}} \epsilon\) where
+        \(\epsilon\) ~ \(N (0, 1)\). Note that we did not just add the noise,
+        but also scale the image. The \(\bar{\alpha}\) is called the
+        <b>alphas_cumprod</b> variable. Which contains the \(\bar{\alpha_t}\)
+        for \( t \in [0, 999] \). And we can get it by calling
+        <b>stage_1.scheduler.alphas_cumprod</b>. Here are my results:
+      </p>
+      <p class="imgTitle">Original Image:</p>
+      <div class="imageWrapper">
+        <img src="images/original_camp.png" class="resultImage" />
+      </div>
+      <p class="imgTitle">Images after adding noise:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 250</p>
+          <img src="images/camp_t = 250.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 500:</p>
+          <img src="images/camp_t = 500.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 750:</p>
+          <img src="images/camp_t = 750.png" class="resultImage" />
+        </div>
+      </div>
+      <p>
+        <b class="suggestion">Observation:</b>
+        As you can see, the image is more noisy when t is higher.
+      </p>
+      <hr />
+      <h3>Part 1 - 2. Classical Denoising</h3>
+      <p class="description">
+        This part is farily simple, before we start to use the diffustion model
+        for denoising, let's try the classical denoising method -
+        <b>Gaussian blur filtering</b>. Here are my results:
+      </p>
+      <p class="imgTitle">Images Before Gaussian blur filtering:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 250</p>
+          <img src="images/camp_t = 250.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 500:</p>
+          <img src="images/camp_t = 500.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 750:</p>
+          <img src="images/camp_t = 750.png" class="resultImage" />
+        </div>
+      </div>
+
+      <p class="imgTitle">Images After Gaussian blur filtering:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 250</p>
+          <img src="images/blur_camp_250.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 500:</p>
+          <img src="images/blur_camp_500.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 750:</p>
+          <img src="images/blur_camp_750.png" class="resultImage" />
+        </div>
+      </div>
+      <p>
+        <b class="suggestion">Observation:</b>
+        You can tell that the results is really bad, and that's why we need the
+        diffusion model for the job.
+      </p>
+      <hr />
+      <h3>Part 1 - 3. One-Step Denoising</h3>
+      <p class="description">
+        In this part, we can finally start using the pre-trained diffusion model
+        to do the denoising job. In this part, we are implementing one-step
+        denosing. Which means that given a noisy image \(x_t\) and the timestep
+        t, we predict the noise to directly obtain \(x_0\), which is the clean
+        image. Note that since the model is trained with text conditionding, we
+        also need to pass in a text prompt embedding, which we use
+        <b>"a high quality photo"</b> here. Here are my results:
+      </p>
+      <p class="imgTitle">Images Before One-Step Denoising:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 250</p>
+          <img src="images/camp_t = 250.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 500:</p>
+          <img src="images/camp_t = 500.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 750:</p>
+          <img src="images/camp_t = 750.png" class="resultImage" />
+        </div>
+      </div>
+
+      <p class="imgTitle">Images After One-Step Denoising:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 250</p>
+          <img src="images/one_step_camp_250.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 500:</p>
+          <img src="images/one_step_camp_500.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 750:</p>
+          <img src="images/one_step_camp_750.png" class="resultImage" />
+        </div>
+      </div>
+      <p>
+        <b class="suggestion">Observation:</b>
+        As you can see, the predicted results of higher t (more noisy image)
+        will be more depart from the original image.
+      </p>
+      <p>
+        <b class="note">Note:</b>
+        Since we add noise to the image using the formula:
+        \(\sqrt{\bar{\alpha_t}} x_0 + \sqrt{1 - \bar{\alpha_t}} \epsilon\) where
+        \(\epsilon\) ~ \(N (0, 1)\). When we obtain the denoised image using the
+        perdiction of the noise, we need to derive tge formula to obtain
+        \(x_0\).
+      </p>
+      <hr />
+      <h3>Part 1 - 4. Iterative Denoising</h3>
+      <p class="description">
+        Since diffusion models are designed to denoise iteratively. In this
+        part, we are implementing iterative denoising. Which means that at every
+        timestep, we denoise and obtain the image at previous timestep. like we
+        can start with \(x_{1000}\), and get \(x_{999}\), and then \(x_{998}\),
+        and keep continue until we get \(x_0\). But it will take a lot of time
+        and computing poer if we run the diffusion model that many times. We can
+        actually skip some steps. By using a
+        <b>strided_timesteps</b> (an arrray of timesteps where
+        strided_timesteps[0] is the largest t (990 in this case), and
+        strided_timesteps[-1] is 0), we can predicted the image at
+        strided_timesteps[i + 1] when we are at strided_timesteps[i]. For
+        example, in this implementation, my stride is 30. Let's say I start at
+        \(x_{990}\), I will then get \(x_{960}\), and then \(x_{930}\) until I
+        get \(x_0\). Which save a lot of time and computing power but still
+        works fine. For every iteration, we will need to perdict the image at
+        previosu time using the following formula and constants:
+      </p>
+
+      <img
+        src="images/Screenshot 2024-11-20 at 12.25.37 AM.png"
+        class="noteImage"
+      />
+      <p class="description">
+        where t is strided_timesteps[i], and t' is just strided_timesteps[i+1].
+        And the way to get \(x_0\) is the same as how we got the clean image in
+        one-step denoising. Here are my results:
+      </p>
+      <p class="imgTitle">Iterative Denoising Images:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 690</p>
+          <img src="images/iterative_camp_690.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 540:</p>
+          <img src="images/iterative_camp_540.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 390:</p>
+          <img src="images/iterative_camp_390.png" class="resultImage" />
+        </div>
+      </div>
+
+      <p class="imgTitle">Iterative Denoising Images:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 240</p>
+          <img src="images/iterative_camp_240.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 90:</p>
+          <img src="images/iterative_camp_90.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">t = 0:</p>
+          <img src="images/iterative_camp_final.png" class="resultImage" />
+        </div>
+      </div>
+
+      <p class="imgTitle">Result Comparison:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Iterative Denoising</p>
+          <img src="images/iterative_camp_final.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">One-Step Denoising:</p>
+          <img src="images/one_step_camp_final.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Gaussian blur filtering</p>
+          <img src="images/gaussian_camp_final.png" class="resultImage" />
+        </div>
+      </div>
+      <p>
+        <b class="suggestion">Observation:</b>
+        It is quite obvious that the iterative denoising method gives us the
+        best result compare to one-step amd Gaussian blur.
+      </p>
+      <p>
+        <b class="note">Note:</b>
+        Note that the image timestep start at 690 here, it is because we start
+        at strided_timesteps[10] (i_start = 10). This is because that we want to
+        at least give model some information about the campenelle so that it can
+        give us some results that still look like a campenelle.
+      </p>
+      <hr />
+      <h3>Part 1 - 5. Diffusion Model Sampling</h3>
+      <p class="description"></p>
+    </div>
+  </body>
+</html>
