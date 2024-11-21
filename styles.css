@@ -126,7 +126,7 @@ ol {
 }
 
 .noteImage {
-  width: 60vw;
+  width: 50%;
 }
 
 .imagSubTitle {
@@ -143,4 +143,8 @@ ol {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.hybrid-image-small {
+  width: 15%;
 }

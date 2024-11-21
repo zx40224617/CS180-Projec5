@@ -20,7 +20,7 @@
     <div class="wrapper">
       <h2 class="title">Background of the project:</h2>
       <p class="introduction">
-        In this part of the project, we are goinf to do a lot of fun things with
+        In this part of the project, we are going to do a lot of fun things with
         the pre-trained diffusion model from DeepFloyd including denoising,
         inpainting, creating visual anagram and hybrid image.
       </p>
@@ -44,7 +44,7 @@
         </div>
         <div class="title-image-wrapper">
           <p class="imagSubTitle">a man wearing a hat:</p>
-          <img src="images/man_wearing_hat_20.png" class="resultImage" />
+          <img src="images/mean_wearing_hat_20.png" class="resultImage" />
         </div>
         <div class="title-image-wrapper">
           <p class="imagSubTitle">a rocket ship:</p>
@@ -52,21 +52,21 @@
         </div>
       </div>
 
-      <p class="imgTitle">inference steps = 10:</p>
+      <p class="imgTitle">inference steps = 50:</p>
       <div class="imageWrapper">
         <div class="title-image-wrapper">
           <p class="imagSubTitle">
             an oil painting of a snowy mountain village:
           </p>
-          <img src="images/snowy_mountan_10.png" class="resultImage" />
+          <img src="images/snowy_mountain_50.png" class="resultImage" />
         </div>
         <div class="title-image-wrapper">
           <p class="imagSubTitle">a man wearing a hat:</p>
-          <img src="images/man_wearing_hat_10.png" class="resultImage" />
+          <img src="images/man_wearing_hat_50.png" class="resultImage" />
         </div>
         <div class="title-image-wrapper">
           <p class="imagSubTitle">a rocket ship:</p>
-          <img src="images/rocket_ship_10.png" class="resultImage" />
+          <img src="images/rocket_ship_50.png" class="resultImage" />
         </div>
       </div>
       <hr />
@@ -390,7 +390,7 @@
         a little bit for it to denoise the image onto the manifold of natural
         images. So in this part, by starting at different i_start (different
         noise level), we can see different levels of editing. And when we start
-        at a really low noise level, the results is goinf to be really similar
+        at a really low noise level, the results is going to be really similar
         to the original image, which is the SDEdit algorithm. Here are my
         results:
       </p>
@@ -427,6 +427,613 @@
           <img src="images/camp_SDE_6.png" class="resultImage" />
         </div>
       </div>
+      <p class="imgTitle">Original Image:</p>
+      <div class="imageWrapper">
+        <img src="images/Doe.jpeg" class="resultImage" />
+      </div>
+      <p class="imgTitle">SDEdit with different noise level:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 1;</p>
+          <img src="images/Doe_1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 3:</p>
+          <img src="images/Doe_3.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 5:</p>
+          <img src="images/Doe_5.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 7:</p>
+          <img src="images/Doe_7.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 10:</p>
+          <img src="images/Doe_10.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 20:</p>
+          <img src="images/Doe_20.png" class="resultImage" />
+        </div>
+      </div>
+      <p class="imgTitle">Original Image:</p>
+      <div class="imageWrapper">
+        <img src="images/CMM.jpeg" class="resultImage" />
+      </div>
+      <p class="imgTitle">SDEdit with different noise level:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 1;</p>
+          <img src="images/CMM_1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 3:</p>
+          <img src="images/CMM_3.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 5:</p>
+          <img src="images/CMM_5.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 7:</p>
+          <img src="images/CMM_7.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 10:</p>
+          <img src="images/CMM_10.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 20:</p>
+          <img src="images/CMM_20.png" class="resultImage" />
+        </div>
+      </div>
+      <hr />
+      <h3>Part 1 - 7 - 1. Editing Hand-Drawn and Web Images</h3>
+      <p class="description">
+        We can also try to start with some unrelistic image and project it onto
+        the natural image manifold using the same techniques that we use in the
+        previous part. Here are my results:
+      </p>
+      <p class="imgTitle">Original Image:</p>
+      <div class="imageWrapper">
+        <img src="images/suisei.jpeg" class="resultImage" />
+      </div>
+      <p class="imgTitle">SDEdit with different noise level:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 1;</p>
+          <img src="images/suisei_1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 3:</p>
+          <img src="images/suisei_3.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 5:</p>
+          <img src="images/suisei_5.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 7:</p>
+          <img src="images/suisei_7.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 10:</p>
+          <img src="images/suisei_10.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 20:</p>
+          <img src="images/suisei_20.png" class="resultImage" />
+        </div>
+      </div>
+
+      <p class="imgTitle">Original Image:</p>
+      <div class="imageWrapper">
+        <img src="images/flower.png" class="resultImage" />
+      </div>
+      <p class="imgTitle">SDEdit with different noise level:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 1;</p>
+          <img src="images/flower_1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 3:</p>
+          <img src="images/flower_3.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 5:</p>
+          <img src="images/flower_5.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 7:</p>
+          <img src="images/flower_7.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 10:</p>
+          <img src="images/flower_10.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 20:</p>
+          <img src="images/flower_20.png" class="resultImage" />
+        </div>
+      </div>
+
+      <p class="imgTitle">Original Image:</p>
+      <div class="imageWrapper">
+        <img src="images/sword.png" class="resultImage" />
+      </div>
+      <p class="imgTitle">SDEdit with different noise level:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 1;</p>
+          <img src="images/sword_1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 3:</p>
+          <img src="images/sword_3.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 5:</p>
+          <img src="images/sword_5.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 7:</p>
+          <img src="images/sword_7.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 10:</p>
+          <img src="images/sword_10.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 20:</p>
+          <img src="images/sword_20.png" class="resultImage" />
+        </div>
+      </div>
+      <h3>Part 1 - 7 - 2. Inpainting</h3>
+      <p class="description">
+        We can also try to implement the same procedure to do inpainting. Which
+        given an image and a binary mask, we left out everything outside the
+        mask the same, but the thing inside the mask is generated by the
+        diffusion model. Which is a really similar precedure as the previous
+        part, but using the formula \(x_t = mx_t + (1 - m)forward(x_{origin,
+        t})\), here are my results:
+      </p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Original Image:</p>
+          <img src="images/original_camp.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Mask:</p>
+          <img src="images/camp_mask.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Inpainted Image:</p>
+          <img src="images/inpainted_camp.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Original Image:</p>
+          <img src="images/table_tennis.jpeg" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Mask:</p>
+          <img src="images/table_tennis_mask.jpg" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Inpainted Image:</p>
+          <img src="images/inpainted_table_tennis.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Original Image:</p>
+          <img src="images/coffee.jpeg" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Mask:</p>
+          <img src="images/coffee_mask.jpg" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">Inpainted Image:</p>
+          <img src="images/inpainted_coffee.png" class="resultImage" />
+        </div>
+      </div>
+      <h3>Part 1 - 7 - 3. Text-Conditional Image-to-image Translation</h3>
+      <p class="description">
+        For this part, we are doing the samething as normal SDEdit, but thus
+        time, instead of <b>"a high quality photo"</b>, we are using other
+        prompt to guide projection.
+      </p>
+      <p class="imgTitle">Original Image:</p>
+      <div class="imageWrapper">
+        <img src="images/original_camp.png" class="resultImage" />
+      </div>
+      <p class="imgTitle">SDEdit with prompt: "a rocket ship":</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 1;</p>
+          <img src="images/rocket_camp_1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 3:</p>
+          <img src="images/rocket_camp_3.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 5:</p>
+          <img src="images/rocket_camp_5.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 7:</p>
+          <img src="images/rocket_camp_7.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 10:</p>
+          <img src="images/rocket_camp_10.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 20:</p>
+          <img src="images/rocket_camp_20.png" class="resultImage" />
+        </div>
+      </div>
+      <p class="imgTitle">Original Image:</p>
+      <div class="imageWrapper">
+        <img src="images/table_tennis.jpeg" class="resultImage" />
+      </div>
+      <p class="imgTitle">SDEdit with prompt: "a pencil":</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 1;</p>
+          <img src="images/table_tennis_pencil_1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 3:</p>
+          <img src="images/table_tennis_pencil_3.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 5:</p>
+          <img src="images/table_tennis_pencil_5.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 7:</p>
+          <img src="images/table_tennis_pencil_7.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 10:</p>
+          <img src="images/table_tennis_pencil_10.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 20:</p>
+          <img src="images/table_tennis_pencil_20.png" class="resultImage" />
+        </div>
+      </div>
+
+      <p class="imgTitle">Original Image:</p>
+      <div class="imageWrapper">
+        <img src="images/coffee.jpeg" class="resultImage" />
+      </div>
+      <p class="imgTitle">SDEdit with prompt: "a photo of a dog":</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 1;</p>
+          <img src="images/coffee_dog_1.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 3:</p>
+          <img src="images/coffee_dog_3.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 5:</p>
+          <img src="images/coffee_dog_5.png" class="resultImage" />
+        </div>
+      </div>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 7:</p>
+          <img src="images/coffee_dog_7.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 10:</p>
+          <img src="images/coffee_dog_10.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">i_start = 20:</p>
+          <img src="images/coffee_dog_20.png" class="resultImage" />
+        </div>
+      </div>
+      <hr />
+      <h3>Part 1 - 8. Visual Anagrams</h3>
+      <p class="description">
+        In this part, we are using the diffusion model to create a visual
+        Anagram. Which will look like an image right-side up, and looks like
+        another image upside down. Which we will need 2 prompts in total. The
+        idea is actually really easy, we get the conditional and unconditonal
+        noise perdiction of the first prompt and use CFG to get noise1, and then
+        we flip the image and get the conditonal and unconditonal noise
+        perdiction of the fliped image as well. And we use CFG to get noise2. We
+        then flip the noise2 back to right-side up, and average noise1 and
+        noise2 to get the final noise, the rest will be the same procedure as
+        what we did in the ' previous parts. Here are my results:
+      </p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">an oil painting of an old man:</p>
+          <img src="images/Oldman.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">
+            an oil painting of people around a campfire:
+          </p>
+          <img src="images/CampFire.png" class="resultImage" />
+        </div>
+      </div>
+
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">a rocket ship:</p>
+          <img src="images/rocket_pencil.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">a pencil:</p>
+          <img src="images/pencil_rocket.png" class="resultImage" />
+        </div>
+      </div>
+
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">
+            an oil painting of a snowy mountain village:
+          </p>
+          <img src="images/snowy_cost.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">a photo of the amalfi cost:</p>
+          <img src="images/cost_snowy.png" class="resultImage" />
+        </div>
+      </div>
+      <hr />
+      <h3>Part 1 - 9. Hybrid Images</h3>
+      <p class="description">
+        For this part, we are doing hybrid image, which the image will look like
+        1 thing viewing from close up, and another thing viewing from far away.
+        The idea is really similar to the previous part. At first, we get the
+        conditonal and unconditonal noise prediction for both prompts (no
+        flipping), and get 2 CFG as the previous part. After we got 2 CFG, we
+        use guassian blur to get the low frequency of one of the image and high
+        frequency of the other image. And just add the 2 frequency together (no
+        averaging) Here are my results:
+      </p>
+      <p class="imgTitle">Hybrid Image of skull and waterfall:</p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">a lithograph of waterfalls:</p>
+          <img src="images/skull_waterfall.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">a lithograph of a skull:</p>
+          <img src="images/skull_waterfall.png" class="hybrid-image-small" />
+        </div>
+      </div>
+
+      <p class="imgTitle">
+        Hybrid Image of old man and snowy mountain village:
+      </p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">
+            an oil painting of a snowy mountain village:
+          </p>
+          <img src="images/snowy_old_man.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">an oil painting of an old man:</p>
+          <img src="images/snowy_old_man.png" class="hybrid-image-small" />
+        </div>
+      </div>
+
+      <p class="imgTitle">
+        Hybrid Image of snowy mountain village and waterfall:
+      </p>
+      <div class="imageWrapper">
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">a lithograph of waterfalls:</p>
+          <img src="images/snowy_waterfall.png" class="resultImage" />
+        </div>
+        <div class="title-image-wrapper">
+          <p class="imagSubTitle">
+            an oil painting of a snowy mountain village:
+          </p>
+          <img src="images/snowy_waterfall.png" class="hybrid-image-small" />
+        </div>
+      </div>
+    </div>
+
+    <h1>Project 5 - Part B: Diffusion Models from Scratch!</h1>
+    <div class="wrapper">
+      <h2 class="title">Background of the project:</h2>
+      <p class="introduction">
+        We already see how and what the pre-trained diffusion model can achieve
+        in the previous part, so we now can try to implement and train out own
+        diffusion model. In this part, we are trainning the diffusion model
+        using the MNIST hand-written digits dataset so that we can denoise a
+        hand-written digits with noise back to the pure image of digits.
+      </p>
+      <h3>Part 1. Training a Single-Step Denoising UNet</h3>
+      <h4>Part 1 - 1. Implementing the UNet:</h4>
+      <p class="description">
+        For this part, we are tainning an easy one-step denoiser that given a
+        noisy image z, we predict the original clean image x by optimize over
+        the following loss function: \(\mathbf{L} = \mathbf{E}_{z,
+        x}\|\mathbf{D}_{\theta}(z) - x\|^2\). And we are implementing a network
+        structure called Unet for the denoiser. And the main idea for the Unet
+        is that it has an encoder where it downsample the image, and the decoder
+        which upsample the encoded image. Also, to perserve the detaisl of the
+        images, we will use what called skip-connections. The details are all in
+        the project spec, which is easy to follow.
+      </p>
+      <h4>Part 1 - 2. Using the UNet to Train a Denoiser:</h4>
+      <p class="description">
+        Before we start traing, we need to create the dataset first. Here, we
+        create the noisy images using the formula : \(z = x + \sigma\epsilon\)
+        where \(\epsilon\) ~ \(N(0, 1)\). which the clean image is the x in the
+        loss funtion and z is the noisy image. Here are my results:
+      </p>
+      <img class="noteImage" src="images/add_noise.png" />
+      <p class="description">
+        After we got the image sets, we can start trianing right now. Note that
+        for training, we use the noisy images with \(\sigma = 0.5\). All the
+        recommened setup and hyper parameters are given in the set, here are my
+        results:
+      </p>
+      <p class="imgTitle">Training Loss:</p>
+      <img class="noteImage" src="images/unconditional_training_loss.png" />
+      <p class="imgTitle">Result at epoch 1:</p>
+      <img class="noteImage" src="images/unconditional smapling e1.png" />
+      <p class="imgTitle">Result at epoch 5:</p>
+      <img class="noteImage" src="images/unconditional sampling e5.png" />
+      <p class="description">
+        Since we trained the networks using \(\sigma = 0.5\), let's see how the
+        results will be if we usedifferent noise levels, here are my results:
+      </p>
+
+      <img class="noteImage" src="images/all_level_noise_output_7.png" />
+      <img class="noteImage" src="images/all_level_noise_output_2.png" />
+      <img class="noteImage" src="images/all_level_noise_output_1.png" />
+      <p>
+        <b class="suggestion">Observation:</b>
+        As we can see, with higher noisy level (higher \(\sigma\)), the denoised
+        results is worse, which makes sense since it is harder for the model to
+        denoise with more noise in the image.
+      </p>
+      <hr />
+      <h3>Part 2. Training a Diffusion Model</h3>
+      <p class="description">
+        Just like in part A, after we finished one-step denoising, we can now
+        implement iterative denoising. Although we are still using MSE loss as
+        in the previous part, but this time, instead of making the model perdict
+        the clean image, we want it to perdict the noise, so the loss function
+        is as following: \(\mathbf{L} = \mathbf{E}_{\epsilon,
+        x}\|\epsilon_{\theta}(z) - \epsilon\|^2\). Like what we did in part A
+        for iterative denosing, \(x_t = \sqrt{\bar{\alpha_t}} x_0 + \sqrt{1 -
+        \bar{\alpha_t}} \epsilon\), so we need all the constants, but this time
+        , we are creating the constans ourselves. And of course, since we are
+        doing iterative denoising, we need to take tinestep as an input to the
+        model as well, so the final loss function will become: \(\mathbf{L} =
+        \mathbf{E}_{\epsilon, x_0, t}\|\epsilon_{\theta}(x_t, t) -
+        \epsilon\|^2\).
+      </p>
+      <h4>Part 2 - 1. Adding Time Conditioning to UNet</h4>
+      <p class="description">
+        In order to add our time condition into the network, we need a new Block
+        called FCB block. Note that since the t we pass in is a bacth of
+        timesteps, we need to braodcast it to something that matches the shape
+        of the results of upblocks. And since each t is a scalar, we need to
+        normalize t to be in the range of [0, 1] here.
+      </p>
+
+      <h4>Part 2 - 2. Training the UNet</h4>
+      <p class="description">
+        Now, we can finally start training our time-conditioned Unet. The
+        detailed algorithm is in the project spec, but note that for every
+        image, we pick a random timestep, and don't forget to normalize t. And
+        we also add a learing rate scheduler here to update learning rate after
+        each epoch. Here are my results using the recommened hyper parameters:
+      </p>
+
+      <img class="noteImage" src="images/time_conditioned_training_loss.png" />
+
+      <h4>Part 2 - 3. Sampling from the UNet</h4>
+      <p class="description">
+        The sampling here is technically the same as what we did in part A, but
+        over here, we don't need to predict teh varaince. we can instead use the
+        list \(\beta\) that we created. Here are my results:
+      </p>
+      <p class="imgTitle">Result at epoch 1:</p>
+      <img class="noteImage" src="images/time_conditioned_sampling_e1.png" />
+      <p class="imgTitle">Result at epoch 5:</p>
+      <img class="noteImage" src="images/time_conditioned_sampling_e5.png" />
+      <p class="description"></p>
+      <p class="imgTitle">Result at epoch 10:</p>
+      <img class="noteImage" src="images/time_conditioned_sampling_e10.png" />
+      <p class="imgTitle">Result at epoch 15:</p>
+      <img class="noteImage" src="images/time_conditioned_sampling_e15.png" />
+      <p class="description"></p>
+      <p class="imgTitle">Result at epoch 20:</p>
+      <img class="noteImage" src="images/time_conditioned_sampling_e20.png" />
+
+      <p>
+        <b class="suggestion">Observation:</b>
+        As we can see, the results are getting better as the epoch number
+        increases, but the final result are still somewhat noisy and bad. So we
+        will implement class conditioned in the next section to get a even
+        better result.
+      </p>
+
+      <hr />
+      <h4>Part 2 - 4. Adding Class-Conditioning to UNet</h4>
+      <p class="description">
+        As we see in the previous section, the results are not good enough, so
+        we need to add class condition (labels 0 - 9) for better results and
+        image genration. In order to do this, we need 2 more FCB blocks for
+        class. Note that we want the class labels to be one_hot_encoded. Also,
+        since we still want the model to work without class conditioning, we
+        implement a drop out mask that will drop 10% of the class conditioning
+        vector to a zero vector. Here are my results using the recommened hyper
+        parameters:
+      </p>
+      <img class="noteImage" src="images/class_conditioned_training_loss.png" />
+
+      <h4>Part 2 - 5. Sampling from the Class-Conditioned UNet</h4>
+      <p class="description">
+        As what we observed in part A, we need to do CFG in order to get a good
+        result. Note that for unconditional predictin, we just pass in a mask
+        with 100% drop out rate. Here are my results:
+      </p>
+
+      <p class="imgTitle">Result at epoch 1:</p>
+      <img class="noteImage" src="images/class_conditioned_sampling_e1.png" />
+      <p class="imgTitle">Result at epoch 5:</p>
+      <img class="noteImage" src="images/class_conditioned_sampling_e5.png" />
+      <p class="description"></p>
+      <p class="imgTitle">Result at epoch 10:</p>
+      <img class="noteImage" src="images/class_conditioned_sampling_e10.png" />
+      <p class="imgTitle">Result at epoch 15:</p>
+      <img class="noteImage" src="images/class_conditioned_sampling_e15.png" />
+      <p class="description"></p>
+      <p class="imgTitle">Result at epoch 20:</p>
+      <img class="noteImage" src="images/class_conditioned_sampling_e20.png" />
+      <p>
+        <b class="suggestion">Observation:</b>
+        As we can see, the results are so much better than the previous part,
+        even early epoch gives a really good result.
+      </p>
+      <hr />
+      <h3>Final Reflection of the Project</h3>
+      <p class="description">
+        Althouhg this project is really long and hard, I still think it is
+        really intersting to see how powerful the machine learning model are in
+        computer vision. Which gives me more idea of what I can do with computer
+        vision right now with all the different models. For no matter who is
+        reading this text, this is a really great semester, thank you for your
+        help.
+      </p>
     </div>
   </body>
 </html>
